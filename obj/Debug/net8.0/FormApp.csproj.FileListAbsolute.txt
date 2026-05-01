@@ -28,3 +28,4 @@
 /Users/fatihcinarli/Desktop/FormApp/obj/Debug/net8.0/FormApp.pdb
 /Users/fatihcinarli/Desktop/FormApp/obj/Debug/net8.0/FormApp.genruntimeconfig.cache
 /Users/fatihcinarli/Desktop/FormApp/obj/Debug/net8.0/ref/FormApp.dll
+/Users/fatihcinarli/Desktop/FormApp/obj/Debug/net8.0/FormApp.sourcelink.json

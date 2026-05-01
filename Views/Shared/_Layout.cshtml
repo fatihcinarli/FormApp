@@ -27,6 +27,10 @@
                         </li>
                     </ul>
                 </div>
+                <form asp-action="Index" class="d-flex" method="get">
+                    <input type="search" name="searchString" placeholder="Anahtar Kelime" class="form-control me-2" value="@ViewBag.SearchString">
+                    <button type="submit" class="btn tbn-primary">Filitrele</button>
+                </form>
             </div>
         </nav>
     </header>
