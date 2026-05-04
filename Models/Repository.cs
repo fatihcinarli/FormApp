@@ -31,5 +31,10 @@ namespace FormApp.Models
                 return _category;
             }
         }
+
+        public static void CreateProduct(Product entity)
+        {
+            _product.Add(entity);
+        }
     }
 }
