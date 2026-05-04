@@ -32,7 +32,15 @@ public class HomeController : Controller
         return View(model);
     }
 
-    public IActionResult Privacy()
+    [HttpGet]
+    public IActionResult Create()
+    {
+        ViewBag.Categories = Repository.GetCategories;
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(Product model)
     {
         return View();
     }
