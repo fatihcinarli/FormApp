@@ -17,7 +17,8 @@ namespace FormApp.Models
         public string? Image { get; set; }
 
         public bool IsActive { get; set; }
-        
+
+        [Display(Name ="Kategori")]
         public int CategoryId { get; set; }
     }
 }

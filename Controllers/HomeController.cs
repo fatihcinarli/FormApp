@@ -35,7 +35,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        ViewBag.Categories = Repository.GetCategories;
+        ViewBag.Categories = new SelectList(Repository.GetCategories, "CategoryId", "CategoryName");
         return View();
     }
 
