@@ -37,6 +37,25 @@ namespace FormApp.Models
 
             }
         }
+        public static void EditIsActive(Product updatedProduct)
+        {
+            var entity = _product.FirstOrDefault(p => p.ProductId == updatedProduct.ProductId);
+            if(entity != null)
+            {
+                entity.IsActive = updatedProduct.IsActive;
+
+            }
+        }
+
+
+        public static void DeleteProduct(Product DelProduct)
+        {
+           var entity = _product.FirstOrDefault(p => p.ProductId == DelProduct.ProductId);
+           if(entity != null)
+            {
+                _product.Remove(entity);
+            }
+        }
 
         public static List<Category> GetCategories
         {

@@ -20,6 +20,7 @@ namespace FormApp.Models
         [Display(Name ="Urun Resmi")]
         public string? Image { get; set; }
 
+        [Display(Name ="Urun Aktif")]
         public bool IsActive { get; set; }
 
         [Required]
