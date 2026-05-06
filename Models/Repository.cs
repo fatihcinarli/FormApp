@@ -24,6 +24,18 @@ namespace FormApp.Models
             }
         }
 
+        public static void EditProduct(Product updatedProduct)
+        {
+            var entity = _product.FirstOrDefault(p => p.ProductId == updatedProduct.ProductId);
+            if(entity != null)
+            {
+                entity.Name = updatedProduct.Name;
+                entity.Price = updatedProduct.Price;
+                entity.Image = updatedProduct.Image;
+                entity.CategoryId = updatedProduct.CategoryId;
+            }
+        }
+
         public static List<Category> GetCategories
         {
             get

@@ -59,10 +59,14 @@ public class HomeController : Controller
 
         if(ModelState.IsValid)
         {
-            using(var stream = new FileStream(path, FileMode.Create))
+            if(imageFile != null)
             {
-                await imageFile.CopyToAsync(stream);
+                using(var stream = new FileStream(path, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
             }
+            
             model.Image = randomFileName;
             Repository.CreateProduct(model);
             return RedirectToAction("Index");
@@ -70,5 +74,45 @@ public class HomeController : Controller
         ViewBag.Categories = new SelectList(Repository.GetCategories, "CategoryId", "CategoryName");
         return View(model);
         
+    }
+
+    public IActionResult Edit(int? id)
+    {
+        if(id == null)
+        {
+            return NotFound();
+        }
+        var entity = Repository.GetProducts.FirstOrDefault(p => p.ProductId == id);
+        if(entity == null)
+        {
+            return NotFound();
+        }
+        ViewBag.Categories = new SelectList(Repository.GetCategories, "CategoryId", "CategoryName");
+        return View(entity);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(int id, Product model, IFormFile? imageFile)
+    {
+        if(id != model.ProductId)
+        {
+            return NotFound();
+        }
+        if(ModelState.IsValid)
+        {
+            var extension = Path.GetExtension(imageFile.FileName); // Doysa uzantısını ayırma
+            var randomFileName = string.Format($"{Guid.NewGuid().ToString()}{extension}");
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", randomFileName);
+
+            if(imageFile != null)
+            {
+                using(var stream = new FileStream(path, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+            }
+            
+        }
+        return View();
     }
 }
